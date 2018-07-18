@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // if we want button to be a link we must specifiy it is a button 
 const Button = props => {
     return (
-        <button onClick={props.onClick} className={props.className}>{props.innerText}</button>    
+        <button onClick={props.onClick} className={props.className} type="submit">{props.innerText}</button>    
     ); 
 };
 

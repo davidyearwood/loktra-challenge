@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SpeechBubble = props => {
   return (
-    <div className={props.containerClassName}>
+    <div className={props.className}>
         {props.children}
     </div>
   );  
 };
 
 SpeechBubble.defaultProps = {
-    containerClassName: 'speech-bubble'
+    className: 'speech-bubble'
 }
 
 export default SpeechBubble; 
