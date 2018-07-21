@@ -1,0 +1,12 @@
+/****************
+ * Button
+ ****************/
+ .btn {
+    background: #FAFAFA;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #777777;    
+    cursor: pointer;
+    font-weight: 600;
+    padding: 15px;
+ }
