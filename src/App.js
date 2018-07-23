@@ -40,13 +40,20 @@ class App extends Component {
   }
   
   updateDonorsAmount(e) {
-    this.setState({
-      'donorsAmount': e.target.value
-    });
+    if (Number(e.target.value) > 0) {
+      this.setState({
+        'donorsAmount': Number(e.target.value)
+      });
+    }
   }
+  
   donate(e) {
     e.preventDefault();
-    this.amountDonatedInPercent = (this.state.amountDonated / this.props.goalAmount) * 100; 
+    
+    this.setState((prevState, props) => ({
+      amountDonated: Number(prevState.amountDonated) + Number(this.state.donorsAmount)
+    })); 
+    
   }
   
   save(e) {
@@ -78,8 +85,8 @@ class App extends Component {
     });
   }
   render() {
-    let amountDonatedInPercent = this.amountDonatedInPercent || 0; 
-    console.log(this.amountDonatedInPercent);
+    let amountDonatedInPercent = (this.state.amountDonated / this.props.goalAmount) * 100; 
+
     return (
       <div className="App">
         <SpeechBubble>
@@ -89,7 +96,7 @@ class App extends Component {
           value={this.state.donorsAmount} 
           onSubmit={this.donate} 
           onChange={this.updateDonorsAmount}
-          width={(this.state.amountDonated / this.props.goalAmount) * 100 || 0}
+          width={amountDonatedInPercent || 0}
           />
         <div className="btn-container">
           <Button innerText="Save for later" onClick={this.save}/>
