@@ -88,7 +88,9 @@ class App extends Component {
   }
   render() {
     let amountDonatedInPercent = (this.state.amountDonated / this.props.goalAmount) * 100; 
-
+    let currentDate = Date.now();
+    let daysUntilDonationEnd = parseInt((Date.parse(this.props.donationEndDate) - currentDate) / 1000 / 60 / 60 / 24, 10);
+    
     return (
       <div className="App">
         <SpeechBubble>
@@ -100,6 +102,7 @@ class App extends Component {
           onChange={this.updateDonorsAmount}
           width={amountDonatedInPercent || 0}
           numberOfDonors={this.state.numberOfDonors}
+          daysLeft={daysUntilDonationEnd}
           />
         <div className="btn-container">
           <Button innerText="Save for later" onClick={this.save}/>
