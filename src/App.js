@@ -51,8 +51,10 @@ class App extends Component {
     e.preventDefault();
     
     this.setState((prevState, props) => ({
-      amountDonated: Number(prevState.amountDonated) + Number(this.state.donorsAmount)
+      amountDonated: Number(prevState.amountDonated) + Number(this.state.donorsAmount), 
+      numberOfDonors: prevState.numberOfDonors + 1
     })); 
+    
     
   }
   
@@ -97,6 +99,7 @@ class App extends Component {
           onSubmit={this.donate} 
           onChange={this.updateDonorsAmount}
           width={amountDonatedInPercent || 0}
+          numberOfDonors={this.state.numberOfDonors}
           />
         <div className="btn-container">
           <Button innerText="Save for later" onClick={this.save}/>
