@@ -11,10 +11,11 @@ class App extends Component {
   constructor(props) {
     super(props); 
     this.state = {
-      donationAmount: 0, 
-      progress: 0, 
+      amountDonated: 0, 
       isSaved: false, 
-      isShared: false
+      isShared: false,
+      numberOfDonors: 0, 
+      donorsAmount: 0
     };
     
     this.save = this.save.bind(this);
@@ -22,7 +23,8 @@ class App extends Component {
     this.closeSaveBox = this.closeSaveBox.bind(this);
     this.closeSharedBox = this.closeSharedBox.bind(this);
     this.shareOnSocialMedia = this.shareOnSocialMedia.bind(this);
-    this.updateDonationAmount = this.updateDonationAmount.bind(this);
+    this.updateAmountDonated = this.updateAmountDonated.bind(this);
+    this.updateDonorsAmount = this.updateDonorsAmount.bind(this);
   }
   
   update(stateName, e) {
@@ -31,19 +33,20 @@ class App extends Component {
     });
   }
   
-  updateDonationAmount(e) {
+  updateAmountDonated(e) {
     if (e.target.value > 0) {
-      this.update('donationAmount', e); 
+      this.update('amountDonated', e); 
     }
   }
   
+  updateDonorsAmount(e) {
+    this.setState({
+      'donorsAmount': e.target.value
+    });
+  }
   donate(e) {
     e.preventDefault();
-    let x = (this.state.donationAmount / this.props.goal) * 100;
-    
-    this.setState({
-      'progress': this.state.progress + x
-    });
+    this.amountDonatedInPercent = (this.state.amountDonated / this.props.goalAmount) * 100; 
   }
   
   save(e) {
@@ -75,28 +78,30 @@ class App extends Component {
     });
   }
   render() {
+    let amountDonatedInPercent = this.amountDonatedInPercent || 0; 
+    console.log(this.amountDonatedInPercent);
     return (
       <div className="App">
         <SpeechBubble>
-          <p className="speech-bubble__msg"><span>$167</span> still needed for this project</p>
+          <p className="speech-bubble__msg"><span>${this.props.goalAmount - this.state.amountDonated}</span> still needed for this project</p>
         </SpeechBubble>
         <DonationContainer 
-          value={this.state.donationAmount} 
+          value={this.state.donorsAmount} 
           onSubmit={this.donate} 
-          onChange={this.updateDonationAmount}
-          width={this.state.progress}
+          onChange={this.updateDonorsAmount}
+          width={(this.state.amountDonated / this.props.goalAmount) * 100 || 0}
           />
         <div className="btn-container">
           <Button innerText="Save for later" onClick={this.save}/>
           <Button innerText="Tell your friends" onClick={this.shareOnSocialMedia}/>
         </div>
         
-        <DialogBox classNameContainer={!this.state.isShared ? 'dialog-box dialog-box--hidden' : 'dialog-box'} onClick={this.closeSharedBox}>
-          <p>Yay, I donated</p>
+        <DialogBox classNameContainer={!this.state.isShared ? 'dialog-box dialog-box--hidden' : 'dialog-box'} classNameButton="btn" onClick={this.closeSharedBox}>
+          <p className="dialog-box__text">Yay, I donated</p>
         </DialogBox>
         
-        <DialogBox classNameContainer={!this.state.isSaved ? 'dialog-box dialog-box--hidden' : 'dialog-box'} onClick={this.closeSaveBox} >
-          <p>Saved</p>
+        <DialogBox classNameContainer={!this.state.isSaved ? 'dialog-box dialog-box--hidden' : 'dialog-box'} classNameButton="btn" onClick={this.closeSaveBox} >
+          <p className="dialog-box__text">Saved</p>
         </DialogBox>
       </div>
     );
