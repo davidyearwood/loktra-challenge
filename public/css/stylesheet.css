@@ -1,3 +1,6 @@
+* {
+ box-sizing: border-box;
+}
 /****************
  * Button
  ****************/
@@ -20,12 +23,34 @@
     padding: 15px 30px;
  }
  
+ .btn--donate:hover,
+ .btn--donate:focus {
+  background: #4ca737;
+  border-color: #4ca737;
+ }
  /****************
  * Donation Form 
  ****************/
+ .donation-form__icon {
+  color: #828282; 
+  font-weight: 600;
+  margin-right: 7.5px;
+ }
+ 
+ .donation-form__label {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 1.5em;
+  padding: 15px 15px;
+ }
+ 
+
  .donation-form__number-field {
-    padding: 15px 30px;
-    border: 2px solid #ccc;
-    border-radius: 3px;
-    font-size: 1.5em;
+  border: none;
+  font-size: 1em;
+}
+
+.donation-form__number-field:focus {
+ border: none;
 }
