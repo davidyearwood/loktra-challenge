@@ -10,3 +10,22 @@
     font-weight: 600;
     padding: 15px;
  }
+ 
+ .btn--donate {
+    color: #fff;
+    background: #55BA3E;
+    border: 1px solid #52AD3E;
+    border-bottom: 3px solid #52AD3E;
+    font-size: 1.5em;
+    padding: 15px 30px;
+ }
+ 
+ /****************
+ * Donation Form 
+ ****************/
+ .donation-form__number-field {
+    padding: 15px 30px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    font-size: 1.5em;
+}
