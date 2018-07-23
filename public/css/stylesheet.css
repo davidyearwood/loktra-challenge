@@ -28,6 +28,7 @@
   background: #4ca737;
   border-color: #4ca737;
  }
+ 
  /****************
  * Donation Form 
  ****************/
@@ -49,8 +50,16 @@
  .donation-form__number-field {
   border: none;
   font-size: 1em;
-}
+ }
+ 
+ .donation-form__number-field:focus {
+  border: none;
+ }
 
-.donation-form__number-field:focus {
- border: none;
-}
+ /****************
+ * Progress
+ ****************/
+ .progress {
+  background: #F15E33;
+  height: 20px;
+ }

@@ -87,7 +87,7 @@ class App extends Component {
     });
   }
   render() {
-    let amountDonatedInPercent = ((this.state.amountDonated / this.props.goalAmount) * 100) + '%', 
+    let amountDonatedInPercent = ((this.state.amountDonated / this.props.goalAmount) * 100), 
         currentDate = Date.now(),
         untilDonationEnd = Date.parse(this.props.donationEndDate) - currentDate,
         daysUntilDonationEnd = millisecondsToDays(untilDonationEnd); 
