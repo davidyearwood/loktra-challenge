@@ -7,6 +7,7 @@ import DonationContainer from './DonationContainer';
 import DialogBox from './DialogBox';
 import millisecondsToDays from './millisecondsToDays';
 import ProgressBar from './ProgressBar'; 
+import Overlay from './Overlay'; 
 
 class App extends Component {
   constructor(props) {
@@ -51,12 +52,12 @@ class App extends Component {
   donate(e) {
     e.preventDefault();
     
-    this.setState((prevState, props) => ({
-      amountDonated: Number(prevState.amountDonated) + Number(this.state.donorsAmount), 
-      numberOfDonors: prevState.numberOfDonors + 1
-    })); 
-    
-    
+    if (this.state.donorsAmount > 0) {
+      this.setState((prevState, props) => ({
+        amountDonated: Number(prevState.amountDonated) + Number(this.state.donorsAmount), 
+        numberOfDonors: prevState.numberOfDonors + 1
+      })); 
+    }
   }
   
   save(e) {
@@ -87,6 +88,7 @@ class App extends Component {
       isShared: false
     });
   }
+  
   render() {
     let amountDonatedInPercent = ((this.state.amountDonated / this.props.goalAmount) * 100), 
         currentDate = Date.now(),
@@ -115,13 +117,17 @@ class App extends Component {
           <Button innerText="Tell your friends" onClick={this.shareOnSocialMedia} className="btn ws-top-20"/>
         </div>
         
-        <DialogBox classNameContainer={!this.state.isShared ? 'dialog-box dialog-box--hidden' : 'dialog-box'} classNameButton="btn" onClick={this.closeSharedBox}>
-          <p className="dialog-box__text">Yay, I donated</p>
-        </DialogBox>
         
-        <DialogBox classNameContainer={!this.state.isSaved ? 'dialog-box dialog-box--hidden' : 'dialog-box'} classNameButton="btn" onClick={this.closeSaveBox} >
-          <p className="dialog-box__text">Saved</p>
-        </DialogBox>
+        <Overlay className={!this.state.isShared ? 'overlay center--children hidden' : 'overlay center--children'}>
+          <DialogBox classNameContainer={!this.state.isShared ? 'dialog-box dialog-box--hidden' : 'dialog-box'} classNameButton="btn" onClick={this.closeSharedBox}>
+            <p className="dialog-box__text">Yay, I donated</p>
+          </DialogBox>
+        </Overlay>
+        <Overlay className={!this.state.isSaved ? 'overlay center--children hidden' : 'overlay center--children'}>
+          <DialogBox classNameContainer={!this.state.isSaved ? 'dialog-box dialog-box--hidden' : 'dialog-box'} classNameButton="btn" onClick={this.closeSaveBox} >
+            <p className="dialog-box__text">Saved</p>
+          </DialogBox>
+        </Overlay>
       </div>
     );
   }
