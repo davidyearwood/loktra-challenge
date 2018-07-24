@@ -15,7 +15,11 @@ const ProgressBar = props => {
         width: width
     }; 
     
-    return <div className="progress" style={style}></div>
+    return (
+        <div className="progress-bar">
+            <div className="progress" style={style}></div>
+        </div>
+    );
 }
 
 export default ProgressBar; 

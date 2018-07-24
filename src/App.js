@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import Button from './Button';
 import SpeechBubble from './SpeechBubble';
 import DonationContainer from './DonationContainer';
 import DialogBox from './DialogBox';
 import millisecondsToDays from './millisecondsToDays';
+import ProgressBar from './ProgressBar'; 
 
 class App extends Component {
   constructor(props) {
@@ -98,11 +99,11 @@ class App extends Component {
         <SpeechBubble>
           <p className="speech-bubble__msg"><span>${this.props.goalAmount - this.state.amountDonated}</span> still needed for this project</p>
         </SpeechBubble>
+        <ProgressBar width={amountDonatedInPercent || 0} />
         <DonationContainer 
           value={this.state.donorsAmount} 
           onSubmit={this.donate} 
           onChange={this.updateDonorsAmount}
-          width={amountDonatedInPercent || 0}
           numberOfDonors={this.state.numberOfDonors}
           daysLeft={daysUntilDonationEnd}
           />

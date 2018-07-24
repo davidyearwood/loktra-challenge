@@ -1,6 +1,26 @@
-* {
- box-sizing: border-box;
-}
+ * {
+  box-sizing: border-box;
+ }
+ 
+ a {
+  color: #1EA5D8;
+  text-decoration: none;
+ }
+ 
+ p {
+  color: #848484;
+  font-size: 1.3em;
+ }
+
+/****************
+ * App
+ ****************/
+ .App {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  width: 100%;
+ }
 /****************
  * Button
  ****************/
@@ -11,6 +31,7 @@
     border-radius: 3px;
     color: #777777;    
     cursor: pointer;
+    font-size: 1.3em;
     font-weight: 600;
     padding: 15px 30px;
  }
@@ -28,6 +49,13 @@
  .btn--donate:focus {
   background: #4ca737;
   border-color: #4ca737;
+ }
+ 
+ /****************
+ * Dialog Box
+ ****************/ 
+ .dialog-box--hidden {
+  display: none;
  }
  
  /****************
@@ -56,7 +84,7 @@
  .donation-form__number-field:focus {
   border: none;
  }
-
+ 
  /****************
  * Progress
  ****************/
@@ -64,3 +92,42 @@
   background: #F15E33;
   height: 20px;
  }
+
+ /****************
+ * Speech Bubble
+ ****************/ 
+ .speech-bubble {
+  background: #424242;
+  border-radius: 3px;
+  padding: 25px 60px;
+  width: 100%; 
+ }
+ 
+ .speech-bubble__msg {
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+ }
+ 
+ /****************
+  * Progress Bar
+  ****************/
+  .progress-bar {
+   background: #FAFAFA;
+   border: 2px solid #ccc;
+  }
+ /****************
+ * Utility Classes
+ ****************/
+ .bold-text {
+  font-weight: 600;
+ }
+ 
+ .highlight--orange {
+  color: #F15E33;
+  font-weight: 600;
+ }
+ .italic {
+  font-style: italic;
+ }
+ 
