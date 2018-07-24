@@ -1,133 +1,203 @@
- * {
-  box-sizing: border-box;
- }
- 
- a {
-  color: #1EA5D8;
-  text-decoration: none;
- }
- 
- p {
-  color: #848484;
-  font-size: 1.3em;
- }
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: #1EA5D8;
+    text-decoration: none;
+}
+
+p {
+    color: #848484;
+    font-size: 1.3em;
+}
 
 /****************
  * App
  ****************/
- .App {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 500px;
-  width: 100%;
- }
+
+.App {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    width: 95%;
+}
+
 /****************
  * Button
  ****************/
- .btn {
+
+.btn {
     background: #FAFAFA;
     border: 1px solid #ccc;
     border-bottom: 3px solid #ccc;
     border-radius: 3px;
-    color: #777777;    
+    color: #777777;
     cursor: pointer;
     font-size: 1.3em;
     font-weight: 600;
     padding: 15px 30px;
- }
- 
- .btn--donate {
+}
+
+.btn-container {
+   display: flex;
+   flex-direction: column;
+}
+
+.btn--donate {
     color: #fff;
     background: #55BA3E;
     border: 1px solid #52AD3E;
     border-bottom: 3px solid #52AD3E;
     font-size: 1.5em;
     padding: 15px 30px;
- }
- 
- .btn--donate:hover,
- .btn--donate:focus {
-  background: #4ca737;
-  border-color: #4ca737;
- }
- 
- /****************
+}
+
+.btn--donate:hover,
+.btn--donate:focus {
+    background: #4ca737;
+    border-color: #4ca737;
+}
+
+/****************
  * Dialog Box
- ****************/ 
- .dialog-box--hidden {
-  display: none;
+ ****************/
+
+.dialog-box--hidden {
+    display: none;
+}
+/********************
+ * Donation 
+ *********************/
+ .donation {
+    padding: 10px 30px;
  }
  
- /****************
+ .donation__text {
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 1.7;
+ }
+ 
+/********************
+ * Donation Container 
+ *********************/
+ .donation-container {
+    border: 2px solid #ccc;
+ }
+ 
+/****************
  * Donation Form 
  ****************/
- .donation-form__icon {
-  color: #828282; 
-  font-weight: 600;
-  margin-right: 7.5px;
+ .donation-form {
+    display: flex; 
+    flex-direction: column;
+ }
+ 
+.donation-form__icon {
+    color: #828282;
+    font-weight: 600;
+    margin-right: 7.5px;
+}
+
+.donation-form__label {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: flex;
+    font-size: 1.5em;
+    padding: 15px 15px;
+    margin-bottom: 15px;
+}
+
+.donation-form__label > .donation-form__number-field {
+    flex-grow: 2;
+}
+
+.donation-form__number-field {
+    border: none;
+    font-size: 1em;
+}
+
+.donation-form__number-field:focus {
+    border: none;
+}
+
+/****************
+ * Progress
+ ****************/
+
+.progress {
+    background: #F15E33;
+    height: 20px;
+}
+
+.progress-bar {
+    background: #FAFAFA;
+    border-bottom: 2px solid #ccc;
+}
+
+/****************
+ * Speech Bubble
+ ****************/
+
+.speech-bubble {
+    background: #424242;
+    border-radius: 3px;
+    padding: 25px 60px;
+    width: 100%;
+}
+
+.speech-bubble__msg {
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/****************
+ * Utility Classes
+ ****************/
+
+.bold-text {
+    font-weight: 600;
+}
+
+.highlight--orange {
+    color: #F15E33;
+    font-weight: 600;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.ws-top-20 {
+    margin-top: 20px;
+}
+
+
+/***********************
+ * Desktop
+ **********************/
+@media (min-width: 480px) {
+ .btn-container {
+    flex-direction: row;
+    justify-content: space-between;
+ }
+ 
+ .btn-container > .btn {
+   flex-basis: 48%;
+ }
+ 
+ .donation-form {
+    flex-direction: row;
+    justify-content: space-between;
+ }
+ 
+ .donation-form > * {
+   flex-basis: 48%;
  }
  
  .donation-form__label {
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  display: inline-block;
-  font-size: 1.5em;
-  padding: 15px 15px;
+    margin-bottom: 0;
  }
- 
-
- .donation-form__number-field {
-  border: none;
-  font-size: 1em;
- }
- 
- .donation-form__number-field:focus {
-  border: none;
- }
- 
- /****************
- * Progress
- ****************/
- .progress {
-  background: #F15E33;
-  height: 20px;
- }
-
- /****************
- * Speech Bubble
- ****************/ 
- .speech-bubble {
-  background: #424242;
-  border-radius: 3px;
-  padding: 25px 60px;
-  width: 100%; 
- }
- 
- .speech-bubble__msg {
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
- }
- 
- /****************
-  * Progress Bar
-  ****************/
-  .progress-bar {
-   background: #FAFAFA;
-   border: 2px solid #ccc;
-  }
- /****************
- * Utility Classes
- ****************/
- .bold-text {
-  font-weight: 600;
- }
- 
- .highlight--orange {
-  color: #F15E33;
-  font-weight: 600;
- }
- .italic {
-  font-style: italic;
- }
- 
+}

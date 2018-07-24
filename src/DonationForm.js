@@ -7,7 +7,7 @@ const DonationForm = props => {
         <form onSubmit={props.onSubmit} className="donation-form">
             <label className="donation-form__label" htmlFor="donation-number-field">
                 <span className="donation-form__icon">$</span>
-                <input type="number" min="1" max="1000" className="donation-form__number-field" value={props.value} onChange={props.onChange} id="donation-number-field" aria-label="The amount you want to donate"/> 
+                <input type="number" min="1" max={props.max} className="donation-form__number-field" value={props.value} onChange={props.onChange} id="donation-number-field" aria-label="The amount you want to donate"/> 
             </label>
             <Button innerText="Give Now" className={props.donationButtonClassName} onClick={props.onClick} />
         </form>  

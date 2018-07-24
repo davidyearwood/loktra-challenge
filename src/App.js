@@ -96,20 +96,23 @@ class App extends Component {
 
     return (
       <div className="App">
-        <SpeechBubble>
+        <SpeechBubble className="speech-bubble ws-top-20">
           <p className="speech-bubble__msg"><span>${this.props.goalAmount - this.state.amountDonated}</span> still needed for this project</p>
         </SpeechBubble>
-        <ProgressBar width={amountDonatedInPercent || 0} />
-        <DonationContainer 
-          value={this.state.donorsAmount} 
-          onSubmit={this.donate} 
-          onChange={this.updateDonorsAmount}
-          numberOfDonors={this.state.numberOfDonors}
-          daysLeft={daysUntilDonationEnd}
-          />
+        <div className="donation-container ws-top-20">
+          <ProgressBar width={amountDonatedInPercent || 0} />
+          <DonationContainer 
+            value={this.state.donorsAmount} 
+            onSubmit={this.donate} 
+            onChange={this.updateDonorsAmount}
+            numberOfDonors={this.state.numberOfDonors}
+            daysLeft={daysUntilDonationEnd}
+            max={this.props.goalAmount - this.state.amountDonated}
+            />
+        </div>
         <div className="btn-container">
-          <Button innerText="Save for later" onClick={this.save}/>
-          <Button innerText="Tell your friends" onClick={this.shareOnSocialMedia}/>
+          <Button innerText="Save for later" onClick={this.save} className="btn ws-top-20"/>
+          <Button innerText="Tell your friends" onClick={this.shareOnSocialMedia} className="btn ws-top-20"/>
         </div>
         
         <DialogBox classNameContainer={!this.state.isShared ? 'dialog-box dialog-box--hidden' : 'dialog-box'} classNameButton="btn" onClick={this.closeSharedBox}>
