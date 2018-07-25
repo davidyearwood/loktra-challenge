@@ -20,6 +20,13 @@ class App extends Component {
       donorsAmount: 0
     };
     
+    
+    this.fbAppId = 434581477023682; 
+    this.fbLink = encodeURIComponent('http://yodlr-front-end-challenge-dayvod.c9users.io:8080/');
+    this.fbRedirect = this.fbLink; 
+    this.fbUrl = 'https://www.facebook.com/dialog/share?' + 'app_id=' + this.fbAppId + '&href=' + this.fbLink + '&display=popup' + '&quote=Yay, I donated!';
+    this.twitterUrl = ' http://twitter.com/intent/tweet?lang=en&url=' + this.fbLink + '&text=Yay, I donated!';
+    
     this.save = this.save.bind(this);
     this.donate = this.donate.bind(this);
     this.closeSaveBox = this.closeSaveBox.bind(this);
@@ -126,7 +133,10 @@ class App extends Component {
         
         <Overlay className={!this.state.isShared ? 'overlay center--children hidden' : 'overlay center--children'}>
           <DialogBox classNameContainer={!this.state.isShared ? 'dialog-box dialog-box--hidden' : 'dialog-box'} classNameButton="btn" onClick={this.closeSharedBox}>
-            <p className="dialog-box__text">Yay, I donated</p>
+            <ul className="social-media-links">
+              <li className="social-media-links__item"><a className="social-media-links__link" href={this.twitterUrl} target="new"><img className="social-media-links__icon" src="img/twitter-square-brands.svg" /></a></li>
+              <li className="social-media-links__item"><a className="social-media-links__link" href={this.fbUrl} target="new"><img className="social-media-links__icon" src="img/facebook-brands.svg" /></a></li>
+            </ul>
           </DialogBox>
         </Overlay>
         <Overlay className={!this.state.isSaved ? 'overlay center--children hidden' : 'overlay center--children'}>
