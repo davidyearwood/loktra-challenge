@@ -93,13 +93,17 @@ class App extends Component {
     let amountDonatedInPercent = ((this.state.amountDonated / this.props.goalAmount) * 100), 
         currentDate = Date.now(),
         untilDonationEnd = Date.parse(this.props.donationEndDate) - currentDate,
-        daysUntilDonationEnd = millisecondsToDays(untilDonationEnd); 
+        daysUntilDonationEnd = millisecondsToDays(untilDonationEnd),
+        amountLeftToReachGoal = this.props.goalAmount - this.state.amountDonated; 
     
-
+    let message = (amountLeftToReachGoal >= 0) ? 
+                  <p className="speech-bubble__msg"><span>${amountLeftToReachGoal}</span> still needed for this project</p> :
+                  <p className="speech-bubble__msg">We've have reached our goal! But donations are still welcomed!</p>; 
+    
     return (
       <div className="App">
         <SpeechBubble className="speech-bubble ws-top-20">
-          <p className="speech-bubble__msg"><span>${this.props.goalAmount - this.state.amountDonated}</span> still needed for this project</p>
+          {message}
         </SpeechBubble>
         <div className="donation-container ws-top-20">
           <ProgressBar width={amountDonatedInPercent || 0} />
@@ -109,10 +113,12 @@ class App extends Component {
             onChange={this.updateDonorsAmount}
             numberOfDonors={this.state.numberOfDonors}
             daysLeft={daysUntilDonationEnd}
-            max={this.props.goalAmount - this.state.amountDonated}
+            max={parseInt(this.props.goalAmount, 10) * 500000}
+            donationFormClassName="donation-form flex--desktop-row flex-space-btw"
+            donationButtonClassName="btn btn--donate flex-basis-48-desktop"
             />
         </div>
-        <div className="btn-container">
+        <div className="btn-container flex--desktop-row flex-space-btw">
           <Button innerText="Save for later" onClick={this.save} className="btn ws-top-20"/>
           <Button innerText="Tell your friends" onClick={this.shareOnSocialMedia} className="btn ws-top-20"/>
         </div>

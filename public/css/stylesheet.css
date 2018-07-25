@@ -39,11 +39,6 @@ p {
     padding: 15px 30px;
 }
 
-.btn-container {
-   display: flex;
-   flex-direction: column;
-}
-
 .btn--donate {
     color: #fff;
     background: #55BA3E;
@@ -97,33 +92,30 @@ p {
 /****************
  * Donation Form 
  ****************/
- .donation-form {
-    display: flex; 
-    flex-direction: column;
- }
- 
 .donation-form__icon {
     color: #828282;
     font-weight: 600;
-    margin-right: 7.5px;
+    margin-left: 17px;
+    margin-right: 8px;
 }
 
 .donation-form__label {
+    align-items: center;
     border: 1px solid #ccc;
     border-radius: 3px;
     display: flex;
+    flex-wrap: wrap;
     font-size: 1.5em;
-    padding: 15px 15px;
+    height: 50px;
+    justify-content: space-evenly;
     margin-bottom: 15px;
-}
-
-.donation-form__label > .donation-form__number-field {
-    flex-grow: 2;
 }
 
 .donation-form__number-field {
     border: none;
+    flex-grow: 1;
     font-size: 1em;
+    width: 0;
 }
 
 .donation-form__number-field:focus {
@@ -137,6 +129,7 @@ p {
 .progress {
     background: #F15E33;
     height: 20px;
+    transition: all .5s;
 }
 
 .progress-bar {
@@ -175,6 +168,16 @@ p {
     justify-content: center;
 }
 
+
+.flex--desktop-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-space-btw {
+    justify-content: space-between;
+}
+
 .hidden {
     display: none;
 }
@@ -201,16 +204,16 @@ p {
     margin-top: 20px;
 }
 
-
+@media (min-width: 480px) {
+    .flex--desktop-row {
+        flex-direction: row;
+    }
+}
 /***********************
  * Desktop
  **********************/
 @media (min-width: 480px) {
- .btn-container {
-    flex-direction: row;
-    justify-content: space-between;
- }
- 
+    
  .btn-container > .btn {
    flex-basis: 48%;
  }
@@ -220,11 +223,11 @@ p {
     justify-content: space-between;
  }
  
- .donation-form > * {
-   flex-basis: 48%;
+ .flex-basis-48-desktop {
+    flex-basis: 48%;
  }
- 
  .donation-form__label {
     margin-bottom: 0;
+    height: auto;
  }
 }
